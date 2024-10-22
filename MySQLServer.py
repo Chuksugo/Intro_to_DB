@@ -16,11 +16,11 @@ def create_database():
             cursor.execute(create_db_query)
             print("Database 'alx_book_store' created successfully!")
 
-    except Error as e:
-        print(f"Error: {e}")  # Handle MySQL errors
+    except Error as error:
+        print(f"MySQL Error: {error}")  # Handle MySQL-specific errors
 
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")  # Handle unexpected errors
+    except Exception as error:
+        print(f"An unexpected error occurred: {error}")  # Handle all other exceptions
 
     finally:
         # Close the cursor and connection
