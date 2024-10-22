@@ -9,24 +9,24 @@ def create_database():
             user=input("Enter username: "),
             password=input("Enter password: ")
         )
-
         if connection.is_connected():
             cursor = connection.cursor()
-
             # SQL command to create the database
             create_db_query = "CREATE DATABASE IF NOT EXISTS alx_book_store"
             cursor.execute(create_db_query)
-
             print("Database 'alx_book_store' created successfully!")
 
     except Error as e:
-        print(f"Error: {e}")
-    
+        print(f"Error: {e}")  # Handle MySQL errors
+
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")  # Handle unexpected errors
+
     finally:
         # Close the cursor and connection
         if 'cursor' in locals():
             cursor.close()
-        if connection.is_connected():
+        if 'connection' in locals() and connection.is_connected():
             connection.close()
 
 if __name__ == "__main__":
